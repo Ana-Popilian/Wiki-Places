@@ -1209,7 +1209,22 @@ final class WMFAppViewController: UITabBarController, AppTabBarDelegate {
             if let articleURL = activity.wmf_linkURL() {
                 placesViewController.updateViewModeToMap()
                 placesViewController.showArticleURL(articleURL)
-            }
+
+            } else if activity.wmf_isValidPlace() {
+              placesViewController.updateViewModeToMap()
+
+              guard let latitude = activity.userInfo?["latitude"] as? CLLocationDegrees,
+                    let longitude = activity.userInfo?["longitude"] as? CLLocationDegrees,
+                    let spanDistance = activity.userInfo?["spanDistance"] as? Double else {
+                done()
+                NSUserActivity.wmf_makeActive(activity)
+                return true
+              }
+
+              placesViewController.view.layoutIfNeeded()
+              let location = CLLocation(latitude: latitude, longitude: longitude)
+              placesViewController.zoomAndPanMapView(toLocation: location, and: spanDistance)
+        }
 
         case .random:
             dismissPresentedViewControllers()

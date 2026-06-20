@@ -71,6 +71,10 @@ __attribute__((annotate("returns_localized_nsstring"))) static inline NSString *
     }
     NSUserActivity *activity = [self wmf_pageActivityWithName:@"Places"];
     activity.webpageURL = articleURL;
+
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary: activity.userInfo];
+    activity.userInfo = [self wmf_getUserInfoFromQueryItems:components.queryItems :userInfo];
+
     return activity;
 }
 
@@ -292,6 +296,12 @@ __attribute__((annotate("returns_localized_nsstring"))) static inline NSString *
     }
 }
 
+- (Boolean)wmf_isValidPlace {
+    return (self.userInfo[@"latitude"] != nil &&
+            self.userInfo[@"longitude"] != nil &&
+            self.userInfo[@"spanDistance"] != nil);
+}
+
 - (NSURL *)wmf_contentURL {
     return self.userInfo[@"WMFURL"];
 }
@@ -348,5 +358,28 @@ __attribute__((annotate("returns_localized_nsstring"))) static inline NSString *
     }
     return components.URL;
 }
+
++ (NSDictionary *)wmf_getUserInfoFromQueryItems: (NSArray<NSURLQueryItem *> *)queryItems :(NSMutableDictionary *)userInfo {
+
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+
+    for (NSURLQueryItem *item in queryItems) {
+      if ([item.name isEqualToString:@"latitude"] ||
+          [item.name isEqualToString:@"longitude"] ||
+          [item.name isEqualToString:@"spanDistance"]) {
+
+        double value = [item.value doubleValue];
+        NSNumber *number = [NSNumber numberWithDouble: value];
+
+        if (number != nil) {
+          [userInfo setObject: number forKey: item.name];
+        }
+      }
+    }
+
+    return userInfo;
+}
+
 
 @end

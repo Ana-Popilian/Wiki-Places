@@ -2286,8 +2286,8 @@ class PlacesViewController: ArticleLocationCollectionViewController, UISearchBar
         view.heading = heading.trueHeading
     }
 
-    func zoomAndPanMapView(toLocation location: CLLocation) {
-        let region = [location.coordinate].wmf_boundingRegion(with: 10000)
+    func zoomAndPanMapView(toLocation location: CLLocation, and spanDistance: Double = 10_000) {
+        let region = [location.coordinate].wmf_boundingRegion(with: spanDistance)
         mapRegion = region
         if let searchRegion = currentSearchRegion, isDistanceSignificant(betweenRegion: searchRegion, andRegion: region) {
             performDefaultSearch(withRegion: mapRegion)
@@ -2296,7 +2296,7 @@ class PlacesViewController: ArticleLocationCollectionViewController, UISearchBar
         }
     }
 
-    var panMapToNextLocationUpdate = true
+    var panMapToNextLocationUpdate = false
 
     @IBAction fileprivate func recenterOnUserLocation(_ sender: Any) {
         guard locationManager.isAuthorized, let userLocation = locationManager.location else {
