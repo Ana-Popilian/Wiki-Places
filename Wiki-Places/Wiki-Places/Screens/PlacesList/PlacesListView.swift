@@ -9,13 +9,13 @@ import SwiftUI
 
 struct PlacesListView: View {
 
-  @Bindable private var viewModel: PlacesListViewModel
+  @State private var viewModel: PlacesListViewModel
   private let didTapLocation: (_ location : Model.Location) -> Void
 
   init(didTapLocation: @escaping (_: Model.Location) -> Void,
        viewModel: PlacesListViewModel = PlacesListViewModel()) {
     self.didTapLocation = didTapLocation
-    self._viewModel = Bindable(viewModel)
+    self._viewModel = State(wrappedValue: viewModel)
   }
 
   var body: some View {

@@ -9,10 +9,10 @@ import MapKit
 import SwiftUI
 
 struct PlaceView: View {
-  @Bindable private var viewModel: PlaceViewModel
+  @State private var viewModel: PlaceViewModel
 
   init(_ viewModel: PlaceViewModel = PlaceViewModel()) {
-    self._viewModel = Bindable(viewModel)
+    self._viewModel = State(wrappedValue:viewModel)
   }
 
   var body: some View {
