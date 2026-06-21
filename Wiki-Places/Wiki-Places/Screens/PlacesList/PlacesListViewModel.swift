@@ -8,7 +8,6 @@
 import Combine
 import SwiftUI
 
-
 @MainActor
 @Observable
 final class PlacesListViewModel: BaseFactory {
@@ -47,7 +46,6 @@ private extension PlacesListViewModel {
     }
   }
 }
-
 
 //MARK: - Place Error type
 enum PlaceError: Error {

@@ -40,7 +40,6 @@ private extension ParameterEncoder {
     }
     
     var urlRequest = urlRequest
-    
     guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
       return urlRequest
     }

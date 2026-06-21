@@ -49,6 +49,7 @@
 		BE3E0C3C2FE720B7004833D6 /* PlacesListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3E0C2E2FE720B7004833D6 /* PlacesListViewModelTests.swift */; };
 		BEC613572FE7E2F2008D3445 /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC613562FE7E2F2008D3445 /* CLLocationCoordinate2D+Extension.swift */; };
 		BEC6135A2FE7E8DA008D3445 /* PlaceViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC613592FE7E8DA008D3445 /* PlaceViewModelTests.swift */; };
+		BEC6135C2FE81EED008D3445 /* DeeplinkComposerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC6135B2FE81EE0008D3445 /* DeeplinkComposerSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		BE3E0C2E2FE720B7004833D6 /* PlacesListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesListViewModelTests.swift; sourceTree = "<group>"; };
 		BEC613562FE7E2F2008D3445 /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		BEC613592FE7E8DA008D3445 /* PlaceViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModelTests.swift; sourceTree = "<group>"; };
+		BEC6135B2FE81EE0008D3445 /* DeeplinkComposerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkComposerSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,6 +360,7 @@
 		BE3E0C2C2FE720B7004833D6 /* Spies */ = {
 			isa = PBXGroup;
 			children = (
+				BEC6135B2FE81EE0008D3445 /* DeeplinkComposerSpy.swift */,
 				BE3E0C272FE720B7004833D6 /* FactorySpy.swift */,
 				BE3E0C282FE720B7004833D6 /* PlacesServiceSpy.swift */,
 				BE3E0C292FE720B7004833D6 /* PlacesWebServiceSpy.swift */,
@@ -555,6 +558,7 @@
 				BE3E0C392FE720B7004833D6 /* PlacesWebServiceSpy.swift in Sources */,
 				BE3E0C3A2FE720B7004833D6 /* RequestComposerSpy.swift in Sources */,
 				BE3E0C3B2FE720B7004833D6 /* URLSessionSpy.swift in Sources */,
+				BEC6135C2FE81EED008D3445 /* DeeplinkComposerSpy.swift in Sources */,
 				BE3E0C3C2FE720B7004833D6 /* PlacesListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

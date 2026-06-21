@@ -22,16 +22,16 @@ enum Dto {
   
   
   // MARK: - WikipediaSearchResponse
-  struct WikipediaSearchResponse: Codable {
+  struct WikipediaSearchResponse: Decodable {
     let query: Query?
     
     // MARK: - Query
-    struct Query: Codable {
+    struct Query: Decodable {
       let pages: [String: Page]
     }
     
     // MARK: - Page
-    struct Page: Codable {
+    struct Page: Decodable {
       let title: String
       let coordinates: [Coordinate]
       let thumbnail: Thumbnail?
@@ -39,14 +39,14 @@ enum Dto {
     }
     
     // MARK: - Coordinate
-    struct Coordinate: Codable {
+    struct Coordinate: Decodable {
       let lat: Double
       let lon: Double
       let dim: String?
     }
     
     // MARK: - Thumbnail
-    struct Thumbnail: Codable {
+    struct Thumbnail: Decodable {
       let imageUrl: URL
       
       enum CodingKeys: String, CodingKey {

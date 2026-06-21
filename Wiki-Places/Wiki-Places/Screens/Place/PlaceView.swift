@@ -20,8 +20,7 @@ struct PlaceView: View {
       MapReader { proxy in
         Map(position: $viewModel.position) {
           if let tappedCoordinate = viewModel.tappedCoordinate {
-
-            Marker("", coordinate: tappedCoordinate)
+            Marker("Selected Place", coordinate: tappedCoordinate)
           }
         }
         .onTapGesture { position in
@@ -77,9 +76,6 @@ private extension PlaceView {
         latitude: coordinate.latitude,
         longitude: coordinate.longitude
       )
-
-      print("Latitude: \(coordinate.latitude)")
-      print("Longitude: \(coordinate.longitude)")
     }
   }
 
@@ -106,7 +102,7 @@ private extension PlaceView {
     Button {
       action()
     } label: {
-      Text("Discover on Wikipedia")
+      Text("Discover in Wikipedia")
         .foregroundStyle(.white)
         .font(.title2)
         .padding()
